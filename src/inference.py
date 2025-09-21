@@ -14,7 +14,16 @@ def generate_text(start="Once upon a time", length=200):
     idx = torch.tensor([encode(start)], dtype=torch.long).to(cfg.DEVICE)
 
     for _ in range(length):
-        logits = model(idx)
+        '''
+        if seq_len is > block size then truncate it to the last 128(blocksize) tokens.
+        Last tokens instead of first 128 tokens because recency matters, the most recent tokens 
+        has high priority in deciding the next tokens.
+        '''
+        if idx.size(1) > cfg.BLOCK_SIZE:
+            idx_cond = idx[:,-cfg.BLOCK_SIZE:]
+        else:
+            idx_cond = idx
+        logits = model(idx_cond)
         probs = torch.softmax(logits[:, -1, :], dim=-1)
         next_id = torch.multinomial(probs, num_samples=1)
         idx = torch.cat([idx, next_id], dim=1)

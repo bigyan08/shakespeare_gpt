@@ -20,7 +20,7 @@ cd shakespeare_gpt
 Install dependencies:
 
 ```bash
-pip install -r requirements.txt
+pip install torch scikit-learn transformers 
 ```
 
 ## Usage
@@ -28,7 +28,7 @@ pip install -r requirements.txt
 Run the main script with your prompt:
 
 ```bash
-python main.py --prompt "To be, or not to be"
+python main.py --prompt "To be, or not to be" --length 100
 ```
 
 ## Project Structure
@@ -38,9 +38,12 @@ python main.py --prompt "To be, or not to be"
 - `data/` - Shakespearean text datasets
 - `README.md` - Project documentation
 - `notebook/` - Jupyter notebooks for experimentation 
-- `requirements.txt` - dependencies
 - `models/` - Saved models as pth files
 
+## Note
+- Ensure you have a compatible GPU for optimal performance and enable it in `config.py`. In my case, I used cpu as I don't have a GPU.
+- Train your own model and give a name, it will be saved in models directory.
+- The default model is mini_gpt.pth, you can use your own trained model by changing the data_path of model in config.py.
 
 ## Contributing
 

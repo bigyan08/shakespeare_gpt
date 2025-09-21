@@ -16,7 +16,7 @@ DROPOUT=0.1
 
 #training
 BATCH_SIZE=64
-EPOCHS=1
+EPOCHS=5
 LEARNING_RATE=3e-4
 
 #device setup

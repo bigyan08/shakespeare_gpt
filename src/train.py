@@ -29,6 +29,7 @@ def train():
             loss.backward()
             opt.step()
 
+        torch.save(model.state_dict(),'../models/mini_gpt.pth')
         # validation
         model.eval()
         with torch.no_grad():
