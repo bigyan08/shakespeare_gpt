@@ -10,6 +10,7 @@ Shakespeare GPT is a language model project designed to generate text in the sty
 
 ## Installation
 
+### Option 1: Local Installation
 Clone the repository:
 
 ```bash
@@ -20,15 +21,37 @@ cd shakespeare_gpt
 Install dependencies:
 
 ```bash
-pip install torch scikit-learn transformers 
+pip install -r requirements.txt 
+```
+
+### Option 2: Docker Installation (Recommended)
+
+Clone the repository:
+
+```bash
+git clone https://github.com/bigyan08/shakespeare_gpt.git
+cd shakespeare_gpt
+```
+Build the Docker image:
+
+```bash
+docker build -t shakespeare_gpt .
 ```
 
 ## Usage
 
+### Local Usage
 Run the main script with your prompt:
 
 ```bash
 python main.py --prompt "To be, or not to be" --length 100
+```
+
+### Docker Usage
+```bash
+docker run shakespeare_gpt
+
+docker run shakespeare_gpt python main.py --prompt "Your highness" --length 100
 ```
 
 ## Project Structure
@@ -39,6 +62,8 @@ python main.py --prompt "To be, or not to be" --length 100
 - `README.md` - Project documentation
 - `notebook/` - Jupyter notebooks for experimentation 
 - `models/` - Saved models as pth files
+- `requirements.txt` - Python dependencies
+- `Dockerfile` - Docker configuration file
 
 ## Note
 - Ensure you have a compatible GPU for optimal performance and enable it in `config.py`. In my case, I used cpu as I don't have a GPU.

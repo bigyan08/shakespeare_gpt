@@ -3,7 +3,7 @@ import src.config as cfg
 from src.model import Transformer
 from src.utils import load_data
 
-def generate_text(start="Once upon a time", length=200):
+def generate_text(start, length):
     _, _, vocab, stoi, itos, encode, decode = load_data(cfg.DATA_PATH)
     cfg.VOCAB_SIZE = len(vocab)
 
